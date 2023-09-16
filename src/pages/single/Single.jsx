@@ -1,4 +1,4 @@
-import Sidebar from "../../components/sidebar/Sidebar";
+import { Sidebar } from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./single.scss";
 import Chart from "../../components/chart/Chart";

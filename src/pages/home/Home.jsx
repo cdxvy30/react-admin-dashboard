@@ -1,4 +1,4 @@
-import Sidebar from "../../components/sidebar/Sidebar";
+import { Sidebar } from "../../components/sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./home.scss";
 import Widget from "../../components/widget/Widget";
@@ -12,7 +12,7 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <div className="widgets">
+        {/* <div className="widgets">
           <Widget type="user" />
           <Widget type="order" />
           <Widget type="earning" />
@@ -21,7 +21,7 @@ const Home = () => {
         <div className="charts">
           <Featured />
           <Chart title="Last 6 months (Revenue)" aspect={2 / 1}/>
-        </div>
+        </div> */}
         <div className="listContainer">
           <div className="listTitle">Latest Transactions</div>
           <Table />

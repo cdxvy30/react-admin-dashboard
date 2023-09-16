@@ -1,4 +1,4 @@
-import "./sidebar.scss";
+import "./Sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
@@ -12,7 +12,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
@@ -83,5 +83,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;
