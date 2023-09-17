@@ -6,8 +6,31 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useState } from "react";
 
 const List = () => {
+  const [imageList, setImageList] = useState([]);
+  const files = imageList ? [...imageList] : [];
+
+  const handleUploadClick = () => {
+    if (!imageList) {
+      return;
+    }
+
+    const data = new FormData();
+    files.forEach((file) => {
+      data.append(`file`, file, file.name);
+    });
+
+    fetch('http://34.81.88.33:8000/batch/predict', {
+      method: 'POST',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  };
+
   const rows = [
     {
       id: 1143155,
@@ -62,41 +85,48 @@ const List = () => {
   ]
 
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
-            <TableCell className="tableCell">Customer</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
-              <TableCell className="tableCell">
-                <div className="cellWrapper">
-                  <img src={row.img} alt="" className="image"/>
-                  {row.product}
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">{row.customer}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      {imageList.length > 0 ? (
+        <TableContainer component={Paper} className="table">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                {/* <TableCell className="tableCell">Tracking ID</TableCell> */}
+                <TableCell className="tableCell">Image</TableCell>
+                <TableCell className="tableCell">Caption Type</TableCell>
+                <TableCell className="tableCell">Caption</TableCell>
+                <TableCell className="tableCell">Issue Type</TableCell>
+                <TableCell className="tableCell">Violation Type</TableCell>
+                {/* <TableCell className="tableCell">Status</TableCell> */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell className="tableCell">{row.id}</TableCell>
+                  <TableCell className="tableCell">
+                    <div className="cellWrapper">
+                      <img src={row.img} alt="" className="image"/>
+                      {row.product}
+                    </div>
+                  </TableCell>
+                  <TableCell className="tableCell">{row.customer}</TableCell>
+                  <TableCell className="tableCell">{row.date}</TableCell>
+                  <TableCell className="tableCell">{row.amount}</TableCell>
+                  <TableCell className="tableCell">{row.method}</TableCell>
+                  <TableCell className="tableCell">
+                    <span className={`status ${row.status}`}>{row.status}</span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <div className="tableCell">Choose images for prediction...</div>
+      )}
+      
+    </div>
   );
 };
 

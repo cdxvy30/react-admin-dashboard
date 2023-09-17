@@ -1,0 +1,53 @@
+.home {
+  display: flex;
+
+  .homeContainer {
+    flex: 6;
+
+    .listContainer {
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      padding: 20px;
+      margin: 20px;
+
+      .listTitle {
+        font-weight: 500;
+        color: gray;
+        margin: 15px;
+      }
+    }
+  }
+
+  .buttonGroup {
+    margin: 20px;
+  }
+
+  .table {
+    .cellWrapper {
+      display: flex;
+      align-items: center;
+  
+      .image {
+        width: 200px;
+        height: 100px;
+        // border-radius: 50%;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+    }
+  
+    .status {
+      padding: 5px;
+      border-radius: 5px;
+  
+      &.Approved {
+        color: green;
+        background-color: rgba(0, 128, 0, 0.151);
+      }
+      &.Pending {
+        color: goldenrod;
+        background-color: rgba(189, 189, 0, 0.103);
+      }
+    }
+  }
+}

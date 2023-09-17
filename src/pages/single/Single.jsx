@@ -1,5 +1,5 @@
-import { Sidebar } from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
+import { Navbar } from "../../components/Navbar";
 import "./single.scss";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";

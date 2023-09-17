@@ -1,0 +1,1 @@
+export const PRED_URL = 'http://34.81.88.33:8000';

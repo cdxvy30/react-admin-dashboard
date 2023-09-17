@@ -1,5 +1,6 @@
-import Home from "./pages/home/Home";
+import { Home } from "./pages/Home";
 import Login from "./pages/login/Login"
+import { Upload } from "./pages/Upload/Upload";
 import List from "./pages/list/List"
 import Single from "./pages/single/Single"
 import New from "./pages/new/New"
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
+            <Route path="upload" element={<Upload />} />
             <Route path="login" element={<Login />} />
             <Route path="users" >
               <Route index element={<List />} />
